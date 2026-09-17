@@ -1,0 +1,118 @@
+/* ==========================================================================
+   MAMTA THEME — Buttons
+   Pill-shaped CTAs in the two brand colors, matching the reference design's
+   btn-primary / btn-secondary / nav-cta / call-btn patterns.
+   Import AFTER theme.css.
+   ========================================================================== */
+
+@layer components {
+  /* ---- Primary: rose, solid, for the main action (Call Now / Book) ---- */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--color-rose);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.98rem;
+    box-shadow: var(--shadow-rose-md);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-rose-lg);
+  }
+  .btn-primary:focus-visible {
+    outline: 2px solid var(--color-rose-deep);
+    outline-offset: 2px;
+  }
+
+  /* ---- Secondary: outlined, teal hover, for the lower-priority action ---- */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: var(--color-ink);
+    padding: 15px 28px;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid var(--color-line);
+    font-weight: 600;
+    font-size: 0.98rem;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-teal);
+    background-color: var(--color-mint);
+  }
+  .btn-secondary:focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+
+  /* ---- Compact CTA: for the sticky nav bar ---- */
+  .btn-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--color-rose);
+    color: #fff;
+    padding: 11px 22px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-rose-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-rose-md);
+  }
+
+  /* ---- Call row: white card-style tap target listing a phone number ---- */
+  .btn-call-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-call);
+    font-weight: 600;
+    color: var(--color-ink);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-call-row:hover {
+    transform: translateY(-2px);
+  }
+  .btn-call-row span {
+    color: var(--color-ink-soft);
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+
+  /* ---- Ghost / tertiary: text-only link that still reads as an action ---- */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-rose-deep);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover {
+    color: var(--color-rose);
+  }
+
+  /* ---- Disabled state, shared by any .btn-* ---- */
+  .btn-primary:disabled,
+  .btn-secondary:disabled,
+  .btn-nav-cta:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}

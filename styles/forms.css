@@ -1,0 +1,171 @@
+/* ==========================================================================
+   MAMTA THEME — Forms
+   The reference design has no form elements, so this extends its visual
+   language (soft rounded fields, paper surfaces, rose/teal focus states)
+   to inputs, selects, textareas, checkboxes, radios and validation states.
+   Import AFTER theme.css.
+   ========================================================================== */
+
+@layer components {
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .field-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .field-label .optional {
+    font-weight: 500;
+    color: var(--color-ink-soft);
+  }
+
+  .field-hint {
+    font-size: 0.82rem;
+    color: var(--color-ink-soft);
+  }
+
+  .field-error {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-rose-deep);
+  }
+
+  /* ---- Text input / textarea / select shell ---- */
+  .field-input,
+  .field-textarea,
+  .field-select {
+    width: 100%;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    border: 1.5px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: 13px 16px;
+    font-size: 0.98rem;
+    font-family: var(--font-sans);
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  }
+  .field-input::placeholder,
+  .field-textarea::placeholder {
+    color: var(--color-ink-soft);
+    opacity: 0.7;
+  }
+  .field-textarea {
+    min-height: 128px;
+    resize: vertical;
+  }
+  .field-select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-ink-soft) 50%),
+      linear-gradient(135deg, var(--color-ink-soft) 50%, transparent 50%);
+    background-position: calc(100% - 20px) center, calc(100% - 15px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 40px;
+  }
+
+  .field-input:hover,
+  .field-textarea:hover,
+  .field-select:hover {
+    border-color: var(--color-ink-soft);
+  }
+
+  .field-input:focus,
+  .field-textarea:focus,
+  .field-select:focus {
+    outline: none;
+    border-color: var(--color-rose);
+    box-shadow: 0 0 0 4px var(--color-blush);
+  }
+
+  /* ---- Invalid / success states ---- */
+  .field-input[aria-invalid='true'],
+  .field-textarea[aria-invalid='true'],
+  .field-select[aria-invalid='true'] {
+    border-color: var(--color-rose-deep);
+  }
+  .field-input[aria-invalid='true']:focus,
+  .field-textarea[aria-invalid='true']:focus {
+    box-shadow: 0 0 0 4px var(--color-blush);
+  }
+  .field-input.is-valid,
+  .field-textarea.is-valid {
+    border-color: var(--color-teal);
+  }
+
+  .field-input:disabled,
+  .field-textarea:disabled,
+  .field-select:disabled {
+    background-color: var(--color-cream);
+    color: var(--color-ink-soft);
+    cursor: not-allowed;
+  }
+
+  /* ---- Checkbox / radio ---- */
+  .field-check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .field-checkbox,
+  .field-radio {
+    appearance: none;
+    flex: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--color-line);
+    background-color: var(--color-paper);
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .field-checkbox {
+    border-radius: 6px;
+  }
+  .field-radio {
+    border-radius: 50%;
+  }
+  .field-checkbox::before,
+  .field-radio::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    transform: scale(0);
+    transition: transform 0.15s ease-in-out;
+  }
+  .field-checkbox::before {
+    border-radius: 2px;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  .field-radio::before {
+    border-radius: 50%;
+  }
+  .field-checkbox:checked,
+  .field-radio:checked {
+    background-color: var(--color-rose);
+    border-color: var(--color-rose);
+  }
+  .field-checkbox:checked::before,
+  .field-radio:checked::before {
+    transform: scale(1);
+  }
+  .field-checkbox:focus-visible,
+  .field-radio:focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+
+  /* ---- Form card wrapper, matching .contact-card in the reference page ---- */
+  .form-card {
+    background: linear-gradient(160deg, #fbe7ee, #e7f3f0);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    padding: 40px 34px;
+  }
+}

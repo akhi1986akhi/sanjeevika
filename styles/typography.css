@@ -1,0 +1,132 @@
+/* ==========================================================================
+   MAMTA THEME — Typography
+   Reusable text classes on top of the Fraunces / Inter / Devanagari tokens
+   defined in theme.css. Import AFTER theme.css.
+   ========================================================================== */
+
+@layer components {
+  /* ---- Language switches (mixed EN / HI copy, same page) ---- */
+  .text-hi {
+    font-family: var(--font-hi-serif);
+  }
+  .text-hi-sans {
+    font-family: var(--font-hi-sans);
+  }
+
+  /* ---- Display / hero heading ---- */
+  .heading-hero {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 3.05rem;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    max-width: 11.5ch;
+    color: var(--color-ink);
+  }
+  @media (max-width: 900px) {
+    .heading-hero {
+      font-size: 2.3rem;
+      max-width: none;
+    }
+  }
+  .heading-hero .accent {
+    color: var(--color-rose);
+  }
+
+  /* ---- Section heading ---- */
+  .heading-section {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 2.15rem;
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  /* ---- Card / component heading ---- */
+  .heading-card {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.45rem;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  /* ---- Small sub-heading (service column headers, etc.) ---- */
+  .heading-sm {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.28rem;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  /* ---- Body copy ---- */
+  .body-lead {
+    font-size: 1.08rem;
+    color: var(--color-ink-soft);
+    max-width: 46ch;
+  }
+  .body-base {
+    font-size: 0.98rem;
+    color: var(--color-ink-soft);
+  }
+  .body-sm {
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+  }
+
+  /* ---- Eyebrow / tag labels (sentence case, not tracked-out caps) ---- */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--color-rose-deep);
+    background-color: var(--color-blush);
+    padding: 7px 16px 7px 10px;
+    border-radius: var(--radius-pill);
+  }
+  .eyebrow .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-teal);
+  }
+
+  .section-tag {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-teal-deep);
+    display: inline-block;
+  }
+
+  /* ---- Big stat number ---- */
+  .stat-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    color: var(--color-ink);
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--color-ink-soft);
+  }
+
+  /* ---- Big stat number/label, inverted for dark or gradient bands ---- */
+  .stat-number-invert {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 2.1rem;
+    color: #fff;
+  }
+  .stat-label-invert {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.86rem;
+    color: #fff;
+    opacity: 0.9;
+  }
+}

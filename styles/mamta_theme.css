@@ -1,0 +1,197 @@
+/* ==========================================================================
+   MAMTA THEME — Theme Vitals
+   Design tokens extracted from the Sanjeevika Mother & Child Care reference
+   page. Tailwind v4 CSS-first config: every token below becomes a real
+   utility class automatically (e.g. --color-rose -> bg-rose, text-rose,
+   border-rose; --radius-pill -> rounded-pill; --shadow-card -> shadow-card).
+
+   Import this FIRST, right after "tailwindcss", in app/globals.css.
+   ========================================================================== */
+
+@theme {
+  /* ---------------------------------------------------------------------
+     COLOR — rose (women's care) + teal (child care), warm neutral ground
+     --------------------------------------------------------------------- */
+  --color-rose: #c21858;
+  --color-rose-deep: #8f1140;
+  --color-rose-light: #fdeef4;
+  --color-blush: #fce6ee;
+
+  --color-teal: #1c7a6e;
+  --color-teal-deep: #124f47;
+  --color-teal-light: #e9f5f2;
+  --color-mint: #e3f2ef;
+
+  /* tinted-card gradient stops + borders (rose/teal "soft" card variants) */
+  --color-rose-soft: #fbe0ea;
+  --color-rose-border: #f6c9d9;
+  --color-teal-soft: #dcf0ea;
+  --color-teal-border: #bfe3d8;
+
+  --color-ink: #2a1620;
+  --color-ink-soft: #5c4650;
+  --color-cream: #fbf4f1;
+  --color-paper: #fffdfc;
+  --color-line: rgb(42 22 32 / 12%);
+  --color-hairline: rgb(42 22 32 / 8%);
+  --color-mist: #f1e6ea;
+
+  /* ---------------------------------------------------------------------
+     TYPOGRAPHY — Fraunces (display/serif) + Inter (body), with
+     Devanagari companions so Hindi copy matches weight & rhythm.
+     --------------------------------------------------------------------- */
+  --font-display: 'Fraunces', 'Noto Serif Devanagari', serif;
+  --font-sans: 'Inter', 'Noto Sans Devanagari', sans-serif;
+  --font-hi-serif: 'Noto Serif Devanagari', 'Fraunces', serif;
+  --font-hi-sans: 'Noto Sans Devanagari', 'Inter', sans-serif;
+
+  /* ---------------------------------------------------------------------
+     RADIUS — pill controls, soft large cards, small icon chips
+     --------------------------------------------------------------------- */
+  --radius-pill: 999px;
+  --radius-2xl: 32px;
+  --radius-xl: 28px;
+  --radius-lg: 26px;
+  --radius-md: 16px;
+  --radius-sm: 14px;
+  --radius-xs: 12px;
+  --radius-2xs: 11px;
+
+  /* ---------------------------------------------------------------------
+     SHADOW — colored, brand-tinted shadows (never plain grey)
+     --------------------------------------------------------------------- */
+  --shadow-rose-sm: 0 6px 16px rgb(194 24 88 / 28%);
+  --shadow-rose-md: 0 10px 24px rgb(194 24 88 / 30%);
+  --shadow-rose-lg: 0 14px 28px rgb(194 24 88 / 36%);
+  --shadow-teal-md: 0 14px 26px -8px rgb(18 79 71 / 50%);
+  --shadow-card: 0 30px 60px -20px rgb(42 22 32 / 28%);
+  --shadow-call: 0 8px 20px -10px rgb(42 22 32 / 25%);
+
+  /* ---------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------- */
+  --breakpoint-wrap: 1180px;
+
+  /* ---------------------------------------------------------------------
+     MOTION — a single deliberate entrance used by the hero visual
+     --------------------------------------------------------------------- */
+  --animate-float-in: float-in 1s ease both;
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   BASE — page defaults that mirror the reference design
+   ========================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   LAYOUT PRIMITIVES
+   ========================================================================== */
+@layer components {
+  .wrap {
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+
+  @media (max-width: 520px) {
+    .wrap {
+      padding-inline: 20px;
+    }
+  }
+
+  .card-surface {
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+  }
+
+  .section {
+    padding-block: 88px;
+  }
+
+  .section-head {
+    max-width: 640px;
+    margin: 0 auto 52px;
+    text-align: center;
+  }
+
+  /* Tinted card variants (doctor cards, and any future rose/teal card) */
+  .card-tint-rose {
+    background: linear-gradient(155deg, var(--color-rose-light), var(--color-rose-soft));
+    border: 1px solid var(--color-rose-border);
+  }
+  .card-tint-teal {
+    background: linear-gradient(155deg, var(--color-teal-light), var(--color-teal-soft));
+    border: 1px solid var(--color-teal-border);
+  }
+
+  /* Diagonal brand gradient — the rose -> teal "stats band" that runs
+     between Services and Contact in the reference page. */
+  .bg-band-gradient {
+    background: linear-gradient(
+      120deg,
+      var(--color-rose-deep),
+      var(--color-rose) 55%,
+      var(--color-teal-deep)
+    );
+  }
+}
