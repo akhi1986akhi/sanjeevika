@@ -118,6 +118,10 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: true,
   },
+
+   verification: {
+    google: "4Wj3_nyPGo04etleGAkjm0PPI51Pt8A_pKp-UQC6F9A",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -126,7 +130,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-
+      
       <Header />
 
       <body className={`${fraunces.variable} ${inter.variable} ${notoSerifDeva.variable} ${notoSansDeva.variable}`}>{children}</body>
